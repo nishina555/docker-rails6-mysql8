@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 別リポジトリとして開発を進める場合
 
-Things you may want to cover:
+```
+### 別プロジェクト名でこのリポジトリをcloneする
+$ git clone git@github.com:nishina555/docker-rails6-mysql8.git [project_name] && cd [project_name]
 
-* Ruby version
+### push先を変更
+$ git remote set-url origin git@github.com:nishina555/[project_name].git
 
-* System dependencies
+### push先の確認
+$ git remote -v
 
-* Configuration
+### push
+$ git push origin HEAD
+```
 
-* Database creation
+clone後、ソースコードのプロジェクト名を変更する。大文字小文字を識別して、以下の文字列を置換する。
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- `rails6_mysql8`を'[project_name]'に置換
+- `RAILS6_MYSQL8`を'[PROJECT_NAME]'に置換
+- `Rails6Mysql8`を'[ProjectName]'に置換
