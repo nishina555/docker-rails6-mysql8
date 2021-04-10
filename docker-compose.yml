@@ -11,6 +11,8 @@ services:
     command: ["./wait-for-it.sh", "db:3306", "--", "./start.sh"]
   db:
     image: mysql:8.0.21
+    ports:
+      - '3306:3306'
     volumes:
       - mysql_data:/var/lib/mysql
       - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
