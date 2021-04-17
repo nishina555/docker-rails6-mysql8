@@ -1,0 +1,32 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/rails6_mysql8
+    depends_on:
+      - db
+      - redis
+    command: ["./wait-for-it.sh", "db:3306", "--", "./start.sh"]
+  db:
+    image: mysql:8.0.21
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_USER: 'webuser'
+      MYSQL_PASSWORD: 'webpass'
+      MYSQL_ROOT_PASSWORD: 'pass'
+      MYSQL_DATABASE: 'rails6_mysql8_development'
+  redis:
+    image: redis:6.2.1
+    volumes:
+      - redis-data:/data
+volumes:
+  mysql_data:
+  redis-data:

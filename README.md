@@ -21,3 +21,16 @@ clone後、ソースコードのプロジェクト名を変更する。大文字
 - `rails6_mysql8`を'[project_name]'に置換
 - `RAILS6_MYSQL8`を'[PROJECT_NAME]'に置換
 - `Rails6Mysql8`を'[ProjectName]'に置換
+
+## Redisを利用する場合
+
+- docker-compose-with-redis.ymlを利用する
+- 以下のように設定ファイルを変更
+
+```
+# config/initializers/sessions_store.rb
+Rails.application.config.session_store :redis_store,
+                                       servers: %w(redis://redis:6379/0/session),
+                                       expire_after: 90.minutes,
+                                       key: "_#{Rails.application.class.parent_name.downcase}_session"
+```
