@@ -1,5 +1,8 @@
 # README
 
+## 環境構築方法
+リポジトリ作成手順書は[こちら](https://nishinatoshiharu.com/docker-rails6-mysql8/)
+
 ## 別リポジトリとして開発を進める場合
 
 ```
